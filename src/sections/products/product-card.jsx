@@ -62,6 +62,8 @@ export default function ShopProductCard({ product }) {
     </Typography>
   );
 
+  const renderStock = <Typography variant="subtitle2">จำนวน {product.stock} ชิ้น</Typography>;
+
   return (
     <Card>
       <Box sx={{ pt: '100%', position: 'relative' }}>
@@ -74,11 +76,11 @@ export default function ShopProductCard({ product }) {
         <Link color="inherit" underline="hover" variant="subtitle2" noWrap>
           {product.name}
         </Link>
-
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <ColorPreview colors={product.colors} />
           {renderPrice}
         </Stack>
+        <span>{renderStock}</span>
       </Stack>
     </Card>
   );

@@ -50,6 +50,7 @@ export const products = [...Array(24)].map((_, index) => {
     cover: `/assets/images/products/product_${setIndex}.jpg`,
     name: PRODUCT_NAME[index],
     price: faker.number.int({ min: 4, max: 99, precision: 0.01 }),
+    stock: faker.number.int({ min: 0, max: 99 }),
     priceSale: setIndex % 3 ? null : faker.number.int({ min: 19, max: 29, precision: 0.01 }),
     colors:
       (setIndex === 1 && PRODUCT_COLOR.slice(0, 2)) ||
