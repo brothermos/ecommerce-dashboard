@@ -11,6 +11,8 @@ import TableCell from '@mui/material/TableCell';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
+import { fDate } from 'src/utils/format-time';
+
 import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 
@@ -20,8 +22,8 @@ export default function UserTableRow({
   selected,
   name,
   avatarUrl,
-  company,
-  role,
+  email,
+  dateCreated,
   isVerified,
   status,
   handleClick,
@@ -52,9 +54,9 @@ export default function UserTableRow({
           </Stack>
         </TableCell>
 
-        <TableCell>{company}</TableCell>
+        <TableCell>{email}</TableCell>
 
-        <TableCell>{role}</TableCell>
+        <TableCell>{fDate(dateCreated)}</TableCell>
 
         <TableCell align="center">{isVerified ? 'Yes' : 'No'}</TableCell>
 
@@ -95,11 +97,11 @@ export default function UserTableRow({
 
 UserTableRow.propTypes = {
   avatarUrl: PropTypes.any,
-  company: PropTypes.any,
+  email: PropTypes.any,
   handleClick: PropTypes.func,
   isVerified: PropTypes.any,
   name: PropTypes.any,
-  role: PropTypes.any,
+  dateCreated: PropTypes.any,
   selected: PropTypes.any,
   status: PropTypes.string,
 };

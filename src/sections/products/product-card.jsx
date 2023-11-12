@@ -10,6 +10,8 @@ import { fCurrency } from 'src/utils/format-number';
 
 import Label from 'src/components/label';
 import { ColorPreview } from 'src/components/color-utils';
+// eslint-disable-next-line perfectionist/sort-imports
+import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -45,22 +47,7 @@ export default function ShopProductCard({ product }) {
     />
   );
 
-  const renderPrice = (
-    <Typography variant="subtitle1">
-      <Typography
-        component="span"
-        variant="body1"
-        sx={{
-          color: 'text.disabled',
-          textDecoration: 'line-through',
-        }}
-      >
-        {product.priceSale && fCurrency(product.priceSale)}
-      </Typography>
-      &nbsp;
-      {fCurrency(product.price)}
-    </Typography>
-  );
+  const renderPrice = <Typography variant="subtitle1">{fCurrency(product.price)}</Typography>;
 
   const renderStock = <Typography variant="subtitle2">จำนวน {product.stock} ชิ้น</Typography>;
 
@@ -68,7 +55,6 @@ export default function ShopProductCard({ product }) {
     <Card>
       <Box sx={{ pt: '100%', position: 'relative' }}>
         {product.status && renderStatus}
-
         {renderImg}
       </Box>
 
@@ -80,7 +66,13 @@ export default function ShopProductCard({ product }) {
           <ColorPreview colors={product.colors} />
           {renderPrice}
         </Stack>
-        <span>{renderStock}</span>
+        <Stack direction="row" alignItems="center" justifyContent="space-between">
+          {renderStock}
+          <Stack direction="row" alignItems="center">
+            <Iconify icon="bxs:edit" sx={{ color: 'green', width: 20, height: 20 }} />
+            <Iconify icon="mingcute:delete-line" sx={{ color: 'red', width: 20, height: 20 }} />
+          </Stack>
+        </Stack>
       </Stack>
     </Card>
   );
