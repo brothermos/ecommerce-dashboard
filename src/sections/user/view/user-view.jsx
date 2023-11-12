@@ -93,7 +93,7 @@ export default function UserPage() {
   const notFound = !dataFiltered.length && !!filterName;
 
   return (
-    <Container>
+    <Container maxWidth="xl">
       <Stack direction="row" alignItems="center" mb={5}>
         <Typography variant="h4">Customer</Typography>
       </Stack>
@@ -116,10 +116,10 @@ export default function UserPage() {
                 onRequestSort={handleSort}
                 onSelectAllClick={handleSelectAllClick}
                 headLabel={[
-                  { id: 'name', label: 'Name' },
+                  { id: 'name', label: 'ชื่อ' },
                   { id: 'email', label: 'E-mail' },
-                  { id: 'dateCreated', label: 'dateCreated' },
-                  { id: 'isVerified', label: 'Verified', align: 'center' },
+                  { id: 'dateCreated', label: 'วันที่สร้าง' },
+                  { id: 'isVerified', label: 'ตรวจสอบ', align: 'center' },
                   { id: 'status', label: 'Status' },
                   { id: '' },
                 ]}
