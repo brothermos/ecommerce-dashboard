@@ -98,7 +98,15 @@ export default function UserPage() {
         <Typography variant="h4">Customer</Typography>
       </Stack>
 
-      <Card>
+      <Card
+        component={Stack}
+        spacing={3}
+        sx={{
+          px: 2,
+          py: 2,
+          borderRadius: 2,
+        }}
+      >
         <UserTableToolbar
           numSelected={selected.length}
           filterName={filterName}

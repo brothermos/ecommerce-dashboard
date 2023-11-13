@@ -39,7 +39,7 @@ export const ReportTable = () => (
       component={Stack}
       spacing={3}
       sx={{
-        px: 3,
+        px: 2,
         py: 2,
         borderRadius: 2,
       }}
