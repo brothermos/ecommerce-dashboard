@@ -7,18 +7,21 @@ import {
   Stack,
   Avatar,
   Divider,
+  Tooltip,
+  Toolbar,
   TableRow,
   TableBody,
   TableCell,
   TableHead,
   Container,
-  CardHeader,
   Typography,
+  IconButton,
 } from '@mui/material';
 
 import { orders } from 'src/_mock/orders';
 
 import Label from 'src/components/label';
+import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
 
 const statusMap = {
@@ -29,18 +32,32 @@ const statusMap = {
 
 export const ReportTable = () => (
   <Container maxWidth="xl">
+    <Stack direction="row" alignItems="center" mb={5}>
+      <Typography variant="h4">Customer</Typography>
+    </Stack>
     <Card
       component={Stack}
       spacing={3}
       sx={{
-        px: 5,
-        py: 3,
+        px: 3,
+        py: 2,
         borderRadius: 2,
       }}
     >
-      <CardHeader title="Latest Orders" />
-      <Box sx={{ minWidth: 800 }}>
-        <Scrollbar>
+      <Toolbar
+        sx={{
+          display: 'flex',
+          justifyContent: 'right'
+        }}
+      >
+        <Tooltip title="Filter list">
+          <IconButton>
+            <Iconify icon="ic:round-filter-list" />
+          </IconButton>
+        </Tooltip>
+      </Toolbar>
+      <Scrollbar>
+        <Box sx={{ minWidth: 800 }}>
           <Table>
             <TableHead>
               <TableRow>
@@ -56,7 +73,6 @@ export const ReportTable = () => (
             <TableBody>
               {orders.map((order) => {
                 const createdAt = format(order.createdAt, 'dd/MM/yyyy');
-
                 return (
                   <TableRow hover key={order.id}>
                     <TableCell>{order.customerName}</TableCell>
@@ -78,8 +94,8 @@ export const ReportTable = () => (
               })}
             </TableBody>
           </Table>
-        </Scrollbar>
-      </Box>
+        </Box>
+      </Scrollbar>
       <Divider />
     </Card>
   </Container>
